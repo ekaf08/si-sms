@@ -137,6 +137,16 @@
                   <i class="fas fa-th-large"></i>
               </a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#" role="button"
+                  onclick="document.querySelector('#form-logout').submit()">
+                  <i class="fas fa-sign-out-alt"></i> Keluar
+              </a>
+
+              <form action="{{ route('logout') }}" id="form-logout">
+                  @csrf
+              </form>
+          </li>
       </ul>
   </nav>
   <!-- /.navbar -->

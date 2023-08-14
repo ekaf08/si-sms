@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SI-SMS | Log in (v2)</title>
+    <title>SI-SMS | Log in</title>
 
     <!-- Google Font: Popins -->
     <style>
@@ -30,10 +30,10 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ asset('/asset/index2.html') }}" class="h1"><b>Sch</b>ooL</a>
+                <a href="{{ route('login') }}" class="h1"><b>Sch</b>ooL</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <!-- <p class="login-box-msg">Sign in to start your session</p> -->
 
                 <form action="{{ route('authLogin') }}" method="post">
                     @csrf
@@ -58,13 +58,15 @@
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember" name="remember">
                                 <label for="remember">
-                                    Remember Me
+                                    <small>
+                                        Ingat Saya
+                                    </small>
                                 </label>
                             </div>
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -82,7 +84,7 @@
                  -->
 
                 <p class="mb-1">
-                    <a href="{{ url('lupa-password') }}">I forgot my password</a>
+                    <a href="{{ url('lupa-password') }}">Lupa Password</a>
                 </p>
                 <!--
                     <p class="mb-0">
