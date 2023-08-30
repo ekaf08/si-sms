@@ -18,9 +18,6 @@ Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/', [AuthController::class, 'authLogin'])->name('authLogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Route::get('/admin/dashboard', function () {
-//     return view('admin.dashboard');
-// });
 
 Route::get('/admin/list', function () {
     return view('admin.admin.list');
