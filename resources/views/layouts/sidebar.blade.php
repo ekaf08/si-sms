@@ -16,11 +16,11 @@
                       alt="User Image">
               </div>
               <div class="info">
-                  <a href="#" class="d-block" style="color: #3c8dbc;">{{ Auth::user()->name }}</a>
+                  <a href="#" class="d-block" style="color: #3c8dbc;">{{ ucwords(Auth::user()->name) }}</a>
               </div>
           </div>
 
-          <!-- SidebarSearch Form -->
+          <!-- SidebarSearch Form
           <div class="form-inline">
               <div class="input-group" data-widget="sidebar-search">
                   <input class="form-control form-control-sidebar" type="search" placeholder="Search"
@@ -31,7 +31,7 @@
                       </button>
                   </div>
               </div>
-          </div>
+          </div>-->
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
