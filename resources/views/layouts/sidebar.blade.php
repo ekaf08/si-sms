@@ -93,7 +93,6 @@
                       <!--End Menu untuk parent-->
                   @endif
 
-
                   <li class="nav-item menu-open">
                       <a href="{{ route('logout') }}" class="nav-link ">
                           <i class="nav-icon fas fa-sign-out-alt"></i>
