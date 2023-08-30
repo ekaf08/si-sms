@@ -25,17 +25,17 @@ Route::get('/admin/list', function () {
 });
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.admin');
 });
 
 Route::group(['middleware' => 'student'], function () {
-    Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('student/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.student');
 });
 
 Route::group(['middleware' => 'teacher'], function () {
-    Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('teacher/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.teacher');
 });
 
 Route::group(['middleware' => 'parent'], function () {
-    Route::get('parent/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('parent/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.parent');
 });

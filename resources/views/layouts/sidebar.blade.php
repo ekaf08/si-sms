@@ -16,7 +16,7 @@
                       alt="User Image">
               </div>
               <div class="info">
-                  <a href="#" class="d-block" style="color: #3c8dbc;">Alexander Pierce</a>
+                  <a href="#" class="d-block" style="color: #3c8dbc;">{{ Auth::user()->name }}</a>
               </div>
           </div>
 
@@ -38,23 +38,61 @@
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                   data-accordion="false">
                   <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                  <li class="nav-item menu-open">
-                      <a href="{{ url('/admin/dashboard') }}" class="nav-link active">
-                          <i class="nav-icon fas fa-tachometer-alt"></i>
-                          <p>
-                              Dashboard
-                          </p>
-                      </a>
-                  </li>
+                  @if (Auth::user()->user_type == 1)
+                      <!--Menu untuk admin-->
+                      <li class="nav-item menu-open">
+                          <a href="{{ route('dashboard.admin') }}" class="nav-link active">
+                              <i class="nav-icon fas fa-tachometer-alt"></i>
+                              <p>
+                                  Dashboard
+                              </p>
+                          </a>
+                      </li>
 
-                  <li class="nav-item menu-open">
-                      <a href="{{ url('/admin/list') }}" class="nav-link active">
-                          <i class="nav-icon fas fa-user"></i>
-                          <p>
-                              Admin
-                          </p>
-                      </a>
-                  </li>
+                      <li class="nav-item menu-open">
+                          <a href="{{ url('/admin/list') }}" class="nav-link active">
+                              <i class="nav-icon fas fa-user"></i>
+                              <p>
+                                  Admin
+                              </p>
+                          </a>
+                      </li>
+                      <!--End Menu untuk admin-->
+                  @elseif(Auth::user()->user_type == 2)
+                      <!--Menu untuk siswa-->
+                      <li class="nav-item menu-open">
+                          <a href="{{ route('dashboard.student') }}" class="nav-link active">
+                              <i class="nav-icon fas fa-tachometer-alt"></i>
+                              <p>
+                                  Dashboard
+                              </p>
+                          </a>
+                      </li>
+                      <!--End Menu untuk siswa-->
+                  @elseif(Auth::user()->user_type == 3)
+                      <!--Menu untuk guru-->
+                      <li class="nav-item menu-open">
+                          <a href="{{ route('dashboard.teacher') }}" class="nav-link active">
+                              <i class="nav-icon fas fa-tachometer-alt"></i>
+                              <p>
+                                  Dashboard
+                              </p>
+                          </a>
+                      </li>
+                      <!--End Menu untuk guru-->
+                  @elseif(Auth::user()->user_type == 4)
+                      <!--Menu untuk parent-->
+                      <li class="nav-item menu-open">
+                          <a href="{{ route('dashboard.parent') }}" class="nav-link active">
+                              <i class="nav-icon fas fa-tachometer-alt"></i>
+                              <p>
+                                  Dashboard
+                              </p>
+                          </a>
+                      </li>
+                      <!--End Menu untuk parent-->
+                  @endif
+
 
                   <li class="nav-item menu-open">
                       <a href="{{ route('logout') }}" class="nav-link ">
