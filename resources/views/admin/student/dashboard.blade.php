@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 @section('breadcrumb')
     @parent
-    <li class="breadcrumb-item active">Dashboard Siswa</li>
+    <!-- <li class="breadcrumb-item active">Dashboard</li> -->
 @endsection
 
 @section('content')

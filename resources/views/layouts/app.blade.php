@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>SI-SMS | Dashboard</title>
+    <title>{{ !empty($header_title) ? $header_title . '-' : '' }} School</title>
 
     <!-- Google Font: Popins -->
     <style>
@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="{{ asset('/asset/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('/asset/plugins/summernote/summernote-bs4.min.css') }}">
+    @yield('style')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -59,7 +60,20 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 @section('breadcrumb')
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    @php
+                                        $currenturl = Request::url(); //digunakan untuk mengambil url yang saat ini aktif
+                                    @endphp
+                                    @if (Auth::user()->user_type == 1 && $currenturl != url('admin/dashboard'))
+                                        <li class="breadcrumb-item"><a href="{{ route('dashboard.admin') }}">Home</a></li>
+                                    @elseif(Auth::user()->user_type == 2 && $currenturl != url('student/dashboard'))
+                                        <li class="breadcrumb-item"><a href="{{ route('dashboard.student') }}">Home</a>
+                                        </li>
+                                    @elseif(Auth::user()->user_type == 3 && $currenturl != url('teacher/dashboard'))
+                                        <li class="breadcrumb-item"><a href="{{ route('dashboard.teacher') }}">Home</a>
+                                        </li>
+                                    @elseif(Auth::user()->user_type == 4 && $currenturl != url('parent/dashboard'))
+                                        <li class="breadcrumb-item"><a href="{{ route('dashboard.parent') }}">Home</a></li>
+                                    @endif
                                 @show
                             </ol>
                         </div><!-- /.col -->
@@ -74,9 +88,7 @@
         @includeIf('layouts.footer')
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
+
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
@@ -112,8 +124,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('/asset/dist/js/adminlte.js') }}"></script>
 
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    {{-- <script src="{{ asset('/asset/dist/js/pages/dashboard.js') }}"></script> --}}
+    @yield('script')
 </body>
 
 </html>

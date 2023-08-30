@@ -1,10 +1,10 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar elevation-4 sidebar-light-lightblue">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link bg-lightblue">
-          <img src="{{ asset('/asset/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-              class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light">School</span>
+      <a href="javascript:void(0)" class="brand-link bg-lightblue" style="text-align: center;">
+          {{-- <img src="{{ asset('/asset/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+              class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+          <span class="brand-text font-weight-light" style="font-weight: bold !important; font-size: 20px;">School</span>
       </a>
 
       <!-- Sidebar -->
@@ -41,7 +41,8 @@
                   @if (Auth::user()->user_type == 1)
                       <!--Menu untuk admin-->
                       <li class="nav-item menu-open">
-                          <a href="{{ route('dashboard.admin') }}" class="nav-link active">
+                          <a href="{{ route('dashboard.admin') }}"
+                              class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
                               <p>
                                   Dashboard
@@ -50,7 +51,8 @@
                       </li>
 
                       <li class="nav-item menu-open">
-                          <a href="{{ url('/admin/list') }}" class="nav-link active">
+                          <a href="{{ url('/admin/list') }}"
+                              class="nav-link @if (Request::segment(2) == 'list') active @endif">
                               <i class="nav-icon fas fa-user"></i>
                               <p>
                                   Admin
@@ -61,7 +63,8 @@
                   @elseif(Auth::user()->user_type == 2)
                       <!--Menu untuk siswa-->
                       <li class="nav-item menu-open">
-                          <a href="{{ route('dashboard.student') }}" class="nav-link active">
+                          <a href="{{ route('dashboard.student') }}"
+                              class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
                               <p>
                                   Dashboard
@@ -72,7 +75,8 @@
                   @elseif(Auth::user()->user_type == 3)
                       <!--Menu untuk guru-->
                       <li class="nav-item menu-open">
-                          <a href="{{ route('dashboard.teacher') }}" class="nav-link active">
+                          <a href="{{ route('dashboard.teacher') }}"
+                              class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
                               <p>
                                   Dashboard
@@ -83,7 +87,8 @@
                   @elseif(Auth::user()->user_type == 4)
                       <!--Menu untuk parent-->
                       <li class="nav-item menu-open">
-                          <a href="{{ route('dashboard.parent') }}" class="nav-link active">
+                          <a href="{{ route('dashboard.parent') }}"
+                              class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
                               <p>
                                   Dashboard
