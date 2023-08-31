@@ -7,6 +7,15 @@
 
 @section('content')
     <!-- Main content -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12" style="text-align: left;">
+                    <a href="{{ route('add_admin') }}" class="btn btn-primary">Add New Admin</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="content">
         <div class="container-fluid">
             <div class="row">

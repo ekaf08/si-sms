@@ -51,7 +51,7 @@
                       </li>
 
                       <li class="nav-item menu-open">
-                          <a href="{{ url('/admin/list') }}"
+                          <a href="{{ route('admin_list') }}"
                               class="nav-link @if (Request::segment(2) == 'list') active @endif">
                               <i class="nav-icon fas fa-user"></i>
                               <p>
