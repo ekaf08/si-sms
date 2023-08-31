@@ -25,10 +25,15 @@ Route::get('/reset/{token}', [AuthController::class, 'reset'])->name('reset_pass
 Route::post('reset/{token}', [AuthController::class, 'postreset'])->name('post_reset');
 
 Route::group(['middleware' => 'admin'], function () {
+    /* Route list admin */
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.admin');
     Route::get('admin/list', [AdminController::class, 'list'])->name('admin_list');
     Route::get('admin/list/add', [AdminController::class, 'add'])->name('add_admin');
     Route::post('admin/list/add', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('admin/list/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('admin/list/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+    Route::put('admin/list/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    /* End Route list admin */
 });
 
 Route::group(['middleware' => 'student'], function () {
