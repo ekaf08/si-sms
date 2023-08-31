@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SI-SMS | Log in</title>
+    <title>{{ !empty($header_title) ? $header_title . '-' : '' }} SI SMS</title>
 
     <!-- Google Font: Popins -->
     <style>
@@ -14,9 +14,6 @@
             font-family: "Poppins", sans-serif;
         }
     </style>
-    <!-- Google Font: Source Sans Pro -->
-    {{-- <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> --}}
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('/asset/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- icheck bootstrap -->
@@ -30,32 +27,35 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ route('login') }}" class="h1"><b>Sch</b>ooL</a>
+                <a href="{{ route('login') }}" class="h1" style="font-size: 1.8rem;">Reset Password</a>
             </div>
             <div class="card-body">
                 <!-- <p class="login-box-msg">Sign in to start your session</p> -->
 
-                <form action="{{ route('authLogin') }}" method="post">
+                <form action="{{ route('post_reset', $token) }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input name="email" required type="email" class="form-control" placeholder="Email">
+                        <input name="password" required type="password" class="form-control" placeholder="password">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-key"></span>
                             </div>
                         </div>
                     </div>
+
                     <div class="input-group mb-3">
-                        <input name="password" required type="password" class="form-control" placeholder="Password">
+                        <input name="confirm_password" required type="password" class="form-control"
+                            placeholder="Confirm Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                                <span class="fas fa-key"></span>
                             </div>
                         </div>
                     </div>
+
                     @include('_message')
                     <div class="row">
-                        <div class="col-8">
+                        <!--  <div class="col-8">
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember" name="remember">
                                 <label for="remember">
@@ -64,34 +64,19 @@
                                     </small>
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+                            <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
-
-                <!-- /.social-auth-links
-                <div class="social-auth-links text-center mt-2 mb-3">
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                    </a>
-                </div>
-                 -->
-
+                <br>
                 <p class="mb-1">
-                    <a href="{{ route('lupa_password') }}">Lupa Password</a>
+                    <a href="{{ route('login') }}">Login</a>
                 </p>
-                <!--
-                    <p class="mb-0">
-                        <a href="register.html" class="text-center">Register a new membership</a>
-                    </p>
-                -->
+
             </div>
             <!-- /.card-body -->
         </div>
