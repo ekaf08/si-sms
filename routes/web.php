@@ -28,6 +28,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.admin');
     Route::get('admin/list', [AdminController::class, 'list'])->name('admin_list');
     Route::get('admin/list/add', [AdminController::class, 'add'])->name('add_admin');
+    Route::post('admin/list/add', [AdminController::class, 'store'])->name('admin.store');
 });
 
 Route::group(['middleware' => 'student'], function () {
