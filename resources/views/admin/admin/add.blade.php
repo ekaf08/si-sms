@@ -62,6 +62,7 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
+                        @include('_message')
                     </div>
                     <div class="text-right card-footer mt-2">
                         <button class="btn btn-secondary" type="reset">
