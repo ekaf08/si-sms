@@ -14,6 +14,10 @@
         * {
             font-family: "Poppins", sans-serif;
         }
+
+        .row label {
+            font-weight: 500 !important;
+        }
     </style>
 
     <!-- Google Font: Source Sans Pro -->
@@ -116,7 +120,7 @@
     <script src="{{ asset('/asset/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('/asset/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('/asset/plugins/tempusdominus-bootstrap-4/js/') }}tempusdominus-bootstrap-4.min.js"></script>
+    {{-- <script src="{{ asset('/asset/plugins/tempusdominus-bootstrap-4/js/') }}tempusdominus-bootstrap-4.min.js"></script> --}}
     <!-- Summernote -->
     <script src="{{ asset('/asset/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <!-- overlayScrollbars -->
@@ -125,6 +129,7 @@
     <script src="{{ asset('/asset/dist/js/adminlte.js') }}"></script>
 
     @yield('script')
+    @stack('custom_script')
 </body>
 
 </html>

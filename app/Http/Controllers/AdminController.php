@@ -17,4 +17,9 @@ class AdminController extends Controller
         $data['header_title'] = 'Add New Admin';
         return view('admin.admin.add', $data);
     }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 }
