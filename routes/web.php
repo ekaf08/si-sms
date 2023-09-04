@@ -31,8 +31,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/list/add', [AdminController::class, 'add'])->name('add_admin');
     Route::post('admin/list/add', [AdminController::class, 'store'])->name('admin.store');
     Route::get('admin/list/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
-    Route::put('admin/list/update/{id}', [AdminController::class, 'update'])->name('admin.update');
-    Route::put('admin/list/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::post('admin/list/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('admin/list/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     /* End Route list admin */
 });
 

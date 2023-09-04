@@ -90,6 +90,7 @@
 
     @push('custom_script')
         <script>
+            // menampilkan password dan konfirmasi password
             cekpass = () => {
                 var x = document.getElementById("password");
                 var y = document.getElementById("cpassword");
@@ -105,7 +106,9 @@
                     y.type = "password";
                 }
             }
+            //End menampilkan password dan konfirmasi password
 
+            // untuk menghilangkan readonly password
             $(document).ready(function() {
                 $('#gantipass').change(function() {
                     console.log('disini');
@@ -120,6 +123,7 @@
                     }
                 })
             });
+            //End untuk menghilangkan readonly password
         </script>
     @endpush
 @endsection

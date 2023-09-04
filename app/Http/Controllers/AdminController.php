@@ -34,9 +34,10 @@ class AdminController extends Controller
                 'name'  => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'user_type' => '1',
             ]);
 
-            return redirect('admin/list')->with('success', 'User Berhasil Di Tambahkan.');
+            return redirect('admin/list')->with('success', 'Admin Berhasil Di Tambahkan.');
         } else {
             return redirect()->back()->with('error', 'Mohon maaf password dan konfirmasi password tidak sesuai.');
         }
@@ -57,7 +58,18 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         $id = decrypt($id);
-        dd($id);
+        $user = User::getSingle($id);
+        $user->name = trim($request->name);
+        $user->email = trim($request->email);
+        if (!empty($request->password)) {
+            if ($request->password == $request->cpassword) {
+                $user->password = Hash::make($request->password);
+            } else {
+                return redirect()->back()->with('error', 'Mohon maaf password dan konfirmasi password tidak sesuai.');
+            }
+        }
+        $user->save();
+        return redirect('admin/list')->with('success', 'Admin Berhasil Di Perbarui.');
     }
 
     public function destroy(Request $request, $id)
