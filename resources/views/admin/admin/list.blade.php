@@ -34,6 +34,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th width="20%">Created Date</th>
+                                        <th width="12%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +44,14 @@
                                             <td>{{ ucwords($item->name) }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                                            <td>
+                                                <!--Button Edit-->
+                                                <a href="{{ route('admin.edit', encrypt($item->id)) }}"
+                                                    class="btn btn-primary">Edit</a>
+                                                <!--Button Haous/ Destroy-->
+                                                <a href="{{ route('admin.destroy', encrypt($item->id)) }}"
+                                                    class="btn btn-danger">Hapus</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

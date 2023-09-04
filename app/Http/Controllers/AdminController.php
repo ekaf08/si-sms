@@ -41,4 +41,28 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Mohon maaf password dan konfirmasi password tidak sesuai.');
         }
     }
+
+    public function edit(Request $request, $id)
+    {
+        $id = decrypt($id);
+        $data['header_title'] = 'Edit Admin';
+        $data['getRecord'] = User::getSingle($id);
+        if (!empty($data['getRecord'])) {
+            return view('admin.admin.edit', $data);
+        } else {
+            abort(404);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $id = decrypt($id);
+        dd($id);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $id = decrypt($id);
+        dd($id);
+    }
 }
