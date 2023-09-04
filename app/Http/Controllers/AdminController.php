@@ -69,12 +69,14 @@ class AdminController extends Controller
             }
         }
         $user->save();
-        return redirect('admin/list')->with('success', 'Admin Berhasil Di Perbarui.');
+        return redirect('admin/list')->with('success', 'Admin ' . ucwords($user->name) . ' Berhasil Di Perbarui.');
     }
 
     public function destroy(Request $request, $id)
     {
         $id = decrypt($id);
-        dd($id);
+        $user = User::getSingle($id);
+        $user->delete();
+        return redirect('admin/list')->with('success', 'Admin ' . ucwords($user->name) . ' Berhasil Di Hapus.');
     }
 }
