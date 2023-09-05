@@ -54,17 +54,20 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12 text-sm text-right">
-                                <div class="form-check text-sm">
-                                    <div id="ubah_password">
-                                        <input type="checkbox" class="form-check-input" id="gantipass">
-                                        <label for="gantipass">Ganti Password</label>
+                            <div class="col-md-12 text-sm text-left ml-2">
+                                <div class="form-group row">
+                                    <div class="form-check text-sm">
+                                        <div id="ubah_password">
+                                            <input type="checkbox" class="form-check-input" id="gantipass">
+                                            <label for="gantipass">Ganti Password</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-check text-sm">
-                                    <div id="tampil_password" hidden>
-                                        <input type="checkbox" class="form-check-input" onclick="cekpass()" id="clik">
-                                        <label for="clik">Tampilkan Password</label>
+                                    <div class="form-check text-sm ml-2">
+                                        <div id="tampil_password" hidden>
+                                            <input type="checkbox" class="form-check-input" onclick="cekpass()"
+                                                id="clik">
+                                            <label for="clik">Tampilkan Password</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

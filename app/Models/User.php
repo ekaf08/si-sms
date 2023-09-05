@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Request;
 
 class User extends Authenticatable
 {
@@ -49,8 +50,21 @@ class User extends Authenticatable
     {
         $data = self::select('users.*')
             ->where('user_type', '=', 1)
-            ->wherenull('deleted_at')
-            ->orderBy('id', 'desc')->get();
+            ->wherenull('deleted_at');
+
+        if (!empty(Request::get('name'))) {
+            $data = $data->where('name', 'like', '%' . Request::get('name') . '%');
+        }
+        if (!empty(Request::get('email'))) {
+            $data = $data->where('email', 'like', '%' . Request::get('email') . '%');
+        }
+        if (!empty(Request::get('date'))) {
+            $data = $data->whereDate('created_at', '=', Request::get('date'));
+        }
+
+        $data = $data->orderBy('id', 'desc')
+            ->paginate(10);
+
         return $data;
     }
 
