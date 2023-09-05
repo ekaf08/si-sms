@@ -23,14 +23,16 @@
                                 <div class="form-group">
                                     <label for="name">Nama : </label>
                                     <input type="text" class="form-control form-control-border" name="name"
-                                        id="name" placeholder="Nama ..." required>
+                                        id="name" placeholder="Nama ..." required value="{{ old('name') }}">
+                                    <div class="text-danger">{{ $errors->first('name') }}</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="email">email : </label>
+                                    <label for="email">Email : </label>
                                     <input type="email" class="form-control form-control-border" name="email"
-                                        id="email" placeholder="example@email.com" required>
+                                        id="email" placeholder="example@email.com" required value="{{ old('email') }}">
+                                    <div class="text-danger">{{ $errors->first('email') }}</div>
                                 </div>
                             </div>
 
@@ -39,6 +41,7 @@
                                     <label for="password">Password : </label>
                                     <input type="password" class="form-control form-control-border" name="password"
                                         id="password" required>
+                                    <div class="text-danger">{{ $errors->first('password') }}</div>
                                 </div>
                             </div>
                             <div class="col-md-6">

@@ -25,17 +25,17 @@ class AdminController extends Controller
     {
         $request->validate([
             'name'  => 'required',
-            'email' => 'required|unique:users|max:255',
-            'password' => 'required|min:3',
+            'email' => 'required|unique:users|max:255|email',
+            'password' => 'required|min:5',
         ]);
 
         if ($request->password == $request->cpassword) {
-            User::create([
-                'name'  => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'user_type' => '1',
-            ]);
+            $user =  new User;
+            $user->name = trim($request->name);
+            $user->email = trim($request->email);
+            $user->password = Hash::make($request->password);
+            $user->user_type = 1;
+            $user->save();
 
             return redirect('admin/list')->with('success', 'Admin Berhasil Di Tambahkan.');
         } else {
@@ -58,6 +58,12 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         $id = decrypt($id);
+
+        $request->validate([
+            'name'  => 'required',
+            'email' => 'required|email|max:255|unique:users,email,' . $id,
+        ]);
+
         $user = User::getSingle($id);
         $user->name = trim($request->name);
         $user->email = trim($request->email);
