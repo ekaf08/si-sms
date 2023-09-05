@@ -11,6 +11,6 @@ class KelasController extends Controller
     {
         // $data['getRecord'] = User::getAdmin();
         $data['header_title'] = 'Kelas List';
-        return view('admin.kelas.index');
+        return view('admin.kelas.index', $data);
     }
 }

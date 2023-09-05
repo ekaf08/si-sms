@@ -40,7 +40,7 @@
                   <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                   @if (Auth::user()->user_type == 1)
                       <!--Menu untuk admin-->
-                      <li class="nav-item menu-open">
+                      <li class="nav-item ">
                           <a href="{{ route('dashboard.admin') }}"
                               class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -50,7 +50,7 @@
                           </a>
                       </li>
 
-                      <li class="nav-item menu-open">
+                      <li class="nav-item ">
                           <a href="{{ route('admin_list') }}"
                               class="nav-link @if (Request::segment(2) == 'list') active @endif">
                               <i class="nav-icon fas fa-user"></i>
@@ -60,7 +60,7 @@
                           </a>
                       </li>
 
-                      <li class="nav-item menu-open">
+                      <li class="nav-item ">
                           <a href="{{ route('kelas.index') }}"
                               class="nav-link @if (Request::segment(2) == 'kelas') active @endif">
                               <i class="nav-icon fas fa-chalkboard-teacher"></i>
@@ -72,7 +72,7 @@
                       <!--End Menu untuk admin-->
                   @elseif(Auth::user()->user_type == 2)
                       <!--Menu untuk siswa-->
-                      <li class="nav-item menu-open">
+                      <li class="nav-item ">
                           <a href="{{ route('dashboard.student') }}"
                               class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -84,7 +84,7 @@
                       <!--End Menu untuk siswa-->
                   @elseif(Auth::user()->user_type == 3)
                       <!--Menu untuk guru-->
-                      <li class="nav-item menu-open">
+                      <li class="nav-item ">
                           <a href="{{ route('dashboard.teacher') }}"
                               class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -96,7 +96,7 @@
                       <!--End Menu untuk guru-->
                   @elseif(Auth::user()->user_type == 4)
                       <!--Menu untuk parent-->
-                      <li class="nav-item menu-open">
+                      <li class="nav-item ">
                           <a href="{{ route('dashboard.parent') }}"
                               class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -108,7 +108,7 @@
                       <!--End Menu untuk parent-->
                   @endif
 
-                  <li class="nav-item menu-open">
+                  <li class="nav-item ">
                       <a href="{{ route('logout') }}" class="nav-link ">
                           <i class="nav-icon fas fa-sign-out-alt"></i>
                           <p>
