@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,15 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/list/update/{id}', [AdminController::class, 'update'])->name('admin.update');
     Route::get('admin/list/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     /* End Route list admin */
+
+    /* Route Kelas */
+    Route::get('admin/kelas/index', [KelasController::class, 'index'])->name('kelas.index');
+    Route::get('admin/kelas/add', [KelasController::class, 'add'])->name('kelas.add');
+    Route::post('admin/kelas/store', [KelasController::class, 'store'])->name('kelas.store');
+    Route::get('admin/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::post('admin/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::get('admin/kelas/destroy/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
+    /* End Route Kelas */
 });
 
 Route::group(['middleware' => 'student'], function () {

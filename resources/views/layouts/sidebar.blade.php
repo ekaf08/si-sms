@@ -59,6 +59,16 @@
                               </p>
                           </a>
                       </li>
+
+                      <li class="nav-item menu-open">
+                          <a href="{{ route('kelas.index') }}"
+                              class="nav-link @if (Request::segment(2) == 'kelas') active @endif">
+                              <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                              <p>
+                                  Kelas
+                              </p>
+                          </a>
+                      </li>
                       <!--End Menu untuk admin-->
                   @elseif(Auth::user()->user_type == 2)
                       <!--Menu untuk siswa-->
