@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Add New Admin')
+@section('title', 'Edit Admin')
 @section('breadcrumb')
     @parent
     <li class="breadcrumb-item active"><a href="{{ route('admin_list') }}">List Admin</a></li>
@@ -77,11 +77,11 @@
                     </div>
                     <div class="text-right card-footer mt-2">
                         <button class="btn btn-secondary" type="reset">
-                            Reset
+                            <i class="fas fa-trash"></i> Reset
                         </button>
 
                         <button class="btn btn-primary" type="submit">
-                            Simpan
+                            <i class="fas fa-save"></i> Simpan
                         </button>
                     </div>
                 </form>
