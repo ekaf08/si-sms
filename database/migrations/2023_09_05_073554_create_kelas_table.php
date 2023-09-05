@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kelas')->unique();
             $table->boolean('status')->nullable();
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
             $table->softDeletes();
         });
