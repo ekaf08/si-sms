@@ -85,10 +85,12 @@
                                             <td>
                                                 <!--Button Edit-->
                                                 <a href="{{ route('admin.edit', encrypt($item->id)) }}"
-                                                    class="btn btn-primary">Edit</a>
+                                                    class="btn btn-primary" title="Edit `{{ ucwords($item->name) }}`"><i
+                                                        class="fas fa-pencil-alt"></i> </a>
                                                 <!--Button Haous/ Destroy-->
                                                 <a href="{{ route('admin.destroy', encrypt($item->id)) }}"
-                                                    class="btn btn-danger">Hapus</a>
+                                                    class="btn btn-danger" title="Hapus `{{ ucwords($item->name) }}`"><i
+                                                        class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
