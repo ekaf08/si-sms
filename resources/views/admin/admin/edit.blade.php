@@ -19,7 +19,7 @@
                     @csrf
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="name">Nama : </label>
                                     <input type="text" class="form-control form-control-border" name="name"
@@ -28,7 +28,7 @@
                                     <div class="text-danger">{{ $errors->first('name') }}</div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="email">email : </label>
                                     <input type="email" class="form-control form-control-border" name="email"
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="password">Password : </label>
                                     <input type="password" class="form-control form-control-border" name="password"
@@ -46,7 +46,7 @@
                                     <div class="text-danger">{{ $errors->first('password') }}</div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="cpassword">Konfirmasi Password : </label>
                                     <input type="password" class="form-control form-control-border" name="cpassword"
@@ -75,13 +75,12 @@
                         <!-- /.card-body -->
                         @include('_message')
                     </div>
-                    <div class="text-right card-footer mt-2">
-                        <button class="btn btn-secondary" type="reset">
-                            <i class="fas fa-trash"></i> Reset
-                        </button>
-
+                    <div class="text-left card-footer mt-2">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-save"></i> Simpan
+                        </button>
+                        <button class="btn btn-secondary" type="reset">
+                            <i class="fas fa-trash"></i> Reset
                         </button>
                     </div>
                 </form>

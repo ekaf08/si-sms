@@ -63,7 +63,8 @@
                                 <thead>
                                     <tr>
                                         <th width="10%">#</th>
-                                        <th>Kelas</th>
+                                        <th>Subject</th>
+                                        <th>Type</th>
                                         <th>Dibuat Oleh</th>
                                         <th>Status</th>
                                         <th width="20%">Tanggal Dibuat</th>
@@ -71,26 +72,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($getKelas as $value => $item)
+                                    @foreach ($getSubjectAll as $value => $item)
                                         <tr>
                                             <td>{{ $value + 1 }}</td>
-                                            <td>{{ ucwords($item->kelas) }}</td>
+                                            <td>{{ ucwords($item->name) }}</td>
+                                            <td>{{ ucwords($item->type) }}</td>
                                             <td>{{ ucwords($item->created_by_name) }}</td>
                                             <td>{{ $item->status == 1 ? 'Aktif' : 'Tidak Aktif' }}</td>
                                             <td>{{ $item->created_at === null ? '-' : $item->created_at->format('d-m-Y') }}
                                             </td>
                                             <td>
                                                 <!--Button Edit-->
-                                                <a href="{{ route('kelas.edit', encrypt($item->id)) }}"
+                                                <a href="{{ route('subject.edit', encrypt($item->id)) }}"
                                                     class="btn btn-primary"> <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                                 <!--Button Haous/ Destroy-->
-                                                <a href="{{ route('kelas.destroy', encrypt($item->id)) }}"
+                                                <a href="{{ route('subject.destroy', encrypt($item->id)) }}"
                                                     class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
 

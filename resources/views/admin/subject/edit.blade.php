@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Edit Kelas')
+@section('title', 'Edit Subject')
 @section('breadcrumb')
     @parent
-    <li class="breadcrumb-item active"><a href="{{ route('kelas.index') }}">List Kelas</a></li>
-    <li class="breadcrumb-item active">Edit Kelas</li>
+    <li class="breadcrumb-item active"><a href="{{ route('subject.index') }}">List Subject</a></li>
+    <li class="breadcrumb-item active">Edit Subject</li>
 @endsection
 
 @section('content')
@@ -12,29 +12,38 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header text-white text-bold" style="background-color: #3c8dbc;">
-                    <h3 class="card-title">Form Edit Kelas</h3>
+                    <h3 class="card-title">Form Edit Subject</h3>
                 </div>
                 <!-- /.card-header -->
-                <form action="{{ route('kelas.update', encrypt($getSingleKelas->id)) }}" method="POST">
+                <form action="{{ route('subject.update', encrypt($getSubjectSingle->id)) }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="name">Nama Kelas : </label>
-                                    <input type="text" class="form-control form-control-border" name="kelas"
-                                        id="kelas" placeholder="Nama Kelas ..." required
-                                        value="{{ old('kelas', $getSingleKelas->kelas) }}">
-                                    <div class="text-danger">{{ $errors->first('kelas') }}</div>
+                                    <label for="name">Nama Subject : </label>
+                                    <input type="text" class="form-control form-control-border" name="name"
+                                        id="name" placeholder="Nama Subject ..." required
+                                        value="{{ old('name', $getSubjectSingle->name) }}">
+                                    <div class="text-danger">{{ $errors->first('name') }}</div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="status">Status Kelas : </label>
+                                    <label for="type">Type Subject : </label>
+                                    <input type="text" class="form-control form-control-border" name="type"
+                                        id="type" placeholder="Type Subject..." required
+                                        value="{{ old('type', $getSubjectSingle->name) }}">
+                                    <div class="text-danger">{{ $errors->first('type') }}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="status">Status Subject : </label>
                                     <select name="status" id="status" class="form-control form-control-border">
-                                        <option {{ $getSingleKelas->status == 1 ? 'selected' : '' }} value="1">Aktif
+                                        <option {{ $getSubjectSingle->status == 1 ? 'selected' : '' }} value="1">Aktif
                                         </option>
-                                        <option {{ $getSingleKelas->status == 0 ? 'selected' : '' }} value="0">Tidak
+                                        <option {{ $getSubjectSingle->status == 0 ? 'selected' : '' }} value="0">Tidak
                                             Aktif</option>
                                     </select>
                                     <div class="text-danger">{{ $errors->first('status') }}</div>
@@ -44,13 +53,12 @@
                         <!-- /.card-body -->
                         @include('_message')
                     </div>
-                    <div class="text-right card-footer mt-2">
-                        <button class="btn btn-secondary" type="reset">
-                            <i class="fas fa-trash"></i> Reset
-                        </button>
-
+                    <div class="text-left card-footer mt-2">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-save"></i> Simpan
+                        </button>
+                        <button class="btn btn-secondary" type="reset">
+                            <i class="fas fa-trash"></i> Reset
                         </button>
                     </div>
                 </form>
