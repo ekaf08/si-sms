@@ -65,41 +65,6 @@
     <!-- /.content -->
 
     @push('custom_script')
-        <script>
-            // menampilkan password dan konfirmasi password
-            cekpass = () => {
-                var x = document.getElementById("password");
-                var y = document.getElementById("cpassword");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-
-                if (y.type === "password") {
-                    y.type = "text";
-                } else {
-                    y.type = "password";
-                }
-            }
-            //End menampilkan password dan konfirmasi password
-
-            // untuk menghilangkan readonly password
-            $(document).ready(function() {
-                $('#gantipass').change(function() {
-                    console.log('disini');
-                    if (this.checked) {
-                        $("#tampil_password").removeAttr("hidden");
-                        $('#password').removeAttr('readonly');
-                        $('#cpassword').removeAttr('readonly');
-                    } else {
-                        $("#tampil_password").attr("hidden", true);
-                        $("#password").attr("readonly", true);
-                        $("#cpassword").attr("readonly", true);
-                    }
-                })
-            });
-            //End untuk menghilangkan readonly password
-        </script>
+        <script></script>
     @endpush
 @endsection

@@ -69,6 +69,16 @@
                               </p>
                           </a>
                       </li>
+
+                      <li class="nav-item ">
+                          <a href="{{ route('subject.index') }}"
+                              class="nav-link @if (Request::segment(1) == 'subject') active @endif">
+                              <i class="nav-icon fas fa-box"></i>
+                              <p>
+                                  Subject
+                              </p>
+                          </a>
+                      </li>
                       <!--End Menu untuk admin-->
                   @elseif(Auth::user()->user_type == 2)
                       <!--Menu untuk siswa-->

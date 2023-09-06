@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,15 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update');
     Route::get('kelas/destroy/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
     /* End Route Kelas */
+
+    /* Route Subject */
+    Route::get('subject/index', [SubjectController::class, 'index'])->name('subject.index');
+    Route::get('subject/add', [SubjectController::class, 'add'])->name('subject.add');
+    Route::post('subject/store', [SubjectController::class, 'store'])->name('subject.store');
+    Route::get('subject/edit/{id}', [SubjectController::class, 'edit'])->name('subject.edit');
+    Route::post('subject/update/{id}', [SubjectController::class, 'update'])->name('subject.update');
+    Route::get('subject/destroy/{id}', [SubjectController::class, 'destroy'])->name('subject.destroy');
+    /* End Route Subject */
 });
 
 Route::group(['middleware' => 'student'], function () {
