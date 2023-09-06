@@ -62,7 +62,7 @@
 
                       <li class="nav-item ">
                           <a href="{{ route('kelas.index') }}"
-                              class="nav-link @if (Request::segment(2) == 'kelas') active @endif">
+                              class="nav-link @if (Request::segment(1) == 'kelas') active @endif">
                               <i class="nav-icon fas fa-chalkboard-teacher"></i>
                               <p>
                                   Kelas

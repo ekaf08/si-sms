@@ -29,9 +29,9 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-md-3">
-                                        <label for="name">Kelas : </label>
-                                        <input type="text" class="form-control" value="{{ Request::get('name') }}"
-                                            name="name" placeholder="Name ..">
+                                        <label for="kelas">Kelas : </label>
+                                        <input type="text" class="form-control" value="{{ Request::get('kelas') }}"
+                                            name="kelas" placeholder="Nama kelas ..">
                                     </div>
 
                                     <div class="form-group col-md-3">
@@ -39,6 +39,7 @@
                                         <input type="date" class="form-control" value="{{ Request::get('date') }}"
                                             name="date">
                                     </div>
+
                                     <div class="form-group col-md-3">
                                         <button class="btn btn-primary" type="submit" style="margin-top: 30px">
                                             <i class="fas fa-search"></i> Cari
@@ -70,28 +71,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($getRecord as $value => $item)
+                                    @foreach ($getKelas as $value => $item)
                                         <tr>
                                             <td>{{ $value + 1 }}</td>
-                                            <td>{{ ucwords($item->name) }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                                            <td>{{ ucwords($item->kelas) }}</td>
+                                            <td>{{ ucwords($item->created_by_name) }}</td>
+                                            <td>{{ $item->status == 1 ? 'Aktif' : 'Tidak Aktif' }}</td>
+                                            <td>{{ $item->created_at === null ? '-' : $item->created_at->format('d-m-Y') }}
+                                            </td>
                                             <td>
                                                 <!--Button Edit-->
-                                                <a href="{{ route('admin.edit', encrypt($item->id)) }}"
-                                                    class="btn btn-primary">Edit</a>
+                                                <a href="{{ route('kelas.edit', encrypt($item->id)) }}"
+                                                    class="btn btn-primary"> <i class="fas fa-pencil-alt"></i>
+                                                </a>
                                                 <!--Button Haous/ Destroy-->
-                                                <a href="{{ route('admin.destroy', encrypt($item->id)) }}"
-                                                    class="btn btn-danger">Hapus</a>
+                                                <a href="{{ route('kelas.destroy', encrypt($item->id)) }}"
+                                                    class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
 
-                            {{-- <div style="padding: 10px; float: right;">
-                                {!! $getRecord->appends('page')->links() !!}
-                            </div> --}}
+                            <div style="padding: 10px; float: right;">
+                                {!! $getKelas->appends('page')->links() !!}
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>

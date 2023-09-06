@@ -37,12 +37,12 @@ Route::group(['middleware' => 'admin'], function () {
     /* End Route list admin */
 
     /* Route Kelas */
-    Route::get('admin/kelas/index', [KelasController::class, 'index'])->name('kelas.index');
-    Route::get('admin/kelas/add', [KelasController::class, 'add'])->name('kelas.add');
-    Route::post('admin/kelas/store', [KelasController::class, 'store'])->name('kelas.store');
-    Route::get('admin/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
-    Route::post('admin/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update');
-    Route::get('admin/kelas/destroy/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
+    Route::get('kelas/index', [KelasController::class, 'index'])->name('kelas.index');
+    Route::get('kelas/add', [KelasController::class, 'add'])->name('kelas.add');
+    Route::post('kelas/store', [KelasController::class, 'store'])->name('kelas.store');
+    Route::get('kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::post('kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::get('kelas/destroy/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
     /* End Route Kelas */
 });
 

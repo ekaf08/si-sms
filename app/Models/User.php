@@ -51,7 +51,7 @@ class User extends Authenticatable
         $data = self::select('users.*')
             ->where('user_type', '=', 1)
             ->wherenull('deleted_at');
-
+        // search
         if (!empty(Request::get('name'))) {
             $data = $data->where('name', 'like', '%' . Request::get('name') . '%');
         }
@@ -61,7 +61,7 @@ class User extends Authenticatable
         if (!empty(Request::get('date'))) {
             $data = $data->whereDate('created_at', '=', Request::get('date'));
         }
-
+        // End search
         $data = $data->orderBy('id', 'desc')
             ->paginate(10);
 
