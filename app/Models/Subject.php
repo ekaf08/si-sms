@@ -24,6 +24,9 @@ class Subject extends Model
         if (!empty(Request::get('subject'))) {
             $data = $data->where('subject.name', 'like', '%' . Request::get('subject') . '%');
         }
+        if (!empty(Request::get('type'))) {
+            $data = $data->where('subject.type', 'like', '%' . Request::get('type') . '%');
+        }
         if (!empty(Request::get('date'))) {
             $data = $data->whereDate('subject.created_at', '=', Request::get('date'));
         }

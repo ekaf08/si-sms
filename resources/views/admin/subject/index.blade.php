@@ -29,9 +29,15 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-md-3">
-                                        <label for="kelas">Subject : </label>
-                                        <input type="text" class="form-control" value="{{ Request::get('kelas') }}"
-                                            name="kelas" placeholder="Nama kelas ..">
+                                        <label for="subject">Subject : </label>
+                                        <input type="text" class="form-control" value="{{ Request::get('subject') }}"
+                                            name="subject" placeholder="Nama subject ..">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="type">Type : </label>
+                                        <input type="text" class="form-control" value="{{ Request::get('type') }}"
+                                            name="type" placeholder="Type ..">
                                     </div>
 
                                     <div class="form-group col-md-3">
@@ -44,7 +50,7 @@
                                         <button class="btn btn-primary" type="submit" style="margin-top: 30px">
                                             <i class="fas fa-search"></i> Cari
                                         </button>
-                                        <a href="{{ route('kelas.index') }}" class="btn btn-secondary"
+                                        <a href="{{ route('subject.index') }}" class="btn btn-secondary"
                                             style="margin-top: 30px"> <i class="fas fa-trash"></i> Reset</a>
                                     </div>
                                 </div>
