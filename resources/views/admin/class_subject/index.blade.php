@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'List Subject')
+@section('title', 'List Kategori Kelas')
 @section('breadcrumb')
     @parent
-    <li class="breadcrumb-item active">List Subject</li>
+    <li class="breadcrumb-item active">List Kategori Kelas</li>
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12" style="text-align: left;">
-                    <a href="{{ route('subject.add') }}" class="btn btn-primary">Tambah Subject Baru</a>
+                    <a href="{{ route('subjectclass.add') }}" class="btn btn-primary">Tambah Kategori Kelas Baru</a>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Cari Subject Berdasarkan ...</h3>
+                            <h3 class="card-title">Cari Kategori Kelas Berdasarkan ...</h3>
                         </div>
 
                         <form method="get" action="">
@@ -68,7 +68,7 @@
                     @include('_message')
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Subject List</h3>
+                            <h3 class="card-title">Kategori Kelas List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
@@ -85,8 +85,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($getSubjectAll as $value => $item)
-                                        <tr>
+                                    @foreach ($getClassSubjectAll as $value => $item)
+                                        {{-- <tr>
                                             <td>{{ $value + 1 }}</td>
                                             <td>{{ ucwords($item->name) }}</td>
                                             <td>{{ ucwords($item->type) }}</td>
@@ -104,13 +104,13 @@
                                                     class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                     @endforeach
                                 </tbody>
                             </table>
 
                             <div style="padding: 10px; float: right;">
-                                {!! $getSubjectAll->appends('page')->links() !!}
+                                {!! $getClassSubjectAll->appends('page')->links() !!}
                             </div>
                         </div>
                         <!-- /.card-body -->
