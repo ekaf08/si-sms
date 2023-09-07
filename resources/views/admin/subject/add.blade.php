@@ -30,8 +30,12 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="type">Type Subject : </label>
-                                    <input type="text" class="form-control form-control-border" name="type"
-                                        id="type" placeholder="Type subject .." required value="{{ old('type') }}">
+                                    <select name="type" id="type" class="form-control form-control-border">
+                                        <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu --
+                                        </option>
+                                        <option value="Teori">Teori</option>
+                                        <option value="Praktikum">Praktikum</option>
+                                    </select>
                                     <div class="text-danger">{{ $errors->first('type') }}</div>
                                 </div>
                             </div>

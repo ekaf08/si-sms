@@ -31,36 +31,41 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="type">Type Subject : </label>
-                                    <input type="text" class="form-control form-control-border" name="type"
-                                        id="type" placeholder="Type Subject..." required
-                                        value="{{ old('type', $getSubjectSingle->name) }}">
-                                    <div class="text-danger">{{ $errors->first('type') }}</div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="status">Status Subject : </label>
-                                    <select name="status" id="status" class="form-control form-control-border">
-                                        <option {{ $getSubjectSingle->status == 1 ? 'selected' : '' }} value="1">Aktif
+                                    <select name="type" id="type" class="form-control form-control-border">
+                                        <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu --
                                         </option>
-                                        <option {{ $getSubjectSingle->status == 0 ? 'selected' : '' }} value="0">Tidak
-                                            Aktif</option>
+                                        <option {{ $getSubjectSingle->status == 'Teori' ? 'selected' : '' }} value="Teori">
+                                            Teori</option>
+                                        <option {{ $getSubjectSingle->status == 'Praktikum' ? 'selected' : '' }}
+                                            value="Praktikum">Praktikum</option>
                                     </select>
-                                    <div class="text-danger">{{ $errors->first('status') }}</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="status">Status Subject : </label>
+                                        <select name="status" id="status" class="form-control form-control-border">
+                                            <option {{ $getSubjectSingle->status == 1 ? 'selected' : '' }} value="1">
+                                                Aktif
+                                            </option>
+                                            <option {{ $getSubjectSingle->status == 0 ? 'selected' : '' }} value="0">
+                                                Tidak
+                                                Aktif</option>
+                                        </select>
+                                        <div class="text-danger">{{ $errors->first('status') }}</div>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- /.card-body -->
+                            @include('_message')
                         </div>
-                        <!-- /.card-body -->
-                        @include('_message')
-                    </div>
-                    <div class="text-left card-footer mt-2">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-save"></i> Simpan
-                        </button>
-                        <button class="btn btn-secondary" type="reset">
-                            <i class="fas fa-trash"></i> Reset
-                        </button>
-                    </div>
+                        <div class="text-left card-footer mt-2">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-save"></i> Simpan
+                            </button>
+                            <button class="btn btn-secondary" type="reset">
+                                <i class="fas fa-trash"></i> Reset
+                            </button>
+                        </div>
                 </form>
 
                 <!-- /.card -->

@@ -36,8 +36,15 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="type">Type : </label>
-                                        <input type="text" class="form-control" value="{{ Request::get('type') }}"
-                                            name="type" placeholder="Type ..">
+                                        <select name="type" id="type" class="form-control">
+                                            <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu
+                                                --
+                                            </option>
+                                            <option {{ Request::get('type') == 'Teori' ? 'selected' : '' }} value="Teori">
+                                                Teori</option>
+                                            <option {{ Request::get('type') == 'Praktikum' ? 'selected' : '' }}
+                                                value="Praktikum">Praktikum</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group col-md-3">
