@@ -76,20 +76,21 @@
                                 <thead>
                                     <tr>
                                         <th width="10%">#</th>
-                                        <th>Subject</th>
-                                        <th>Type</th>
+                                        <th>Nama Kelas</th>
+                                        <th>Subjek</th>
                                         <th>Dibuat Oleh</th>
                                         <th>Status</th>
                                         <th width="20%">Tanggal Dibuat</th>
                                         <th width="12%">Aksi</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     @foreach ($getClassSubjectAll as $value => $item)
-                                        {{-- <tr>
+                                        <tr>
                                             <td>{{ $value + 1 }}</td>
-                                            <td>{{ ucwords($item->name) }}</td>
-                                            <td>{{ ucwords($item->type) }}</td>
+                                            <td>{{ ucwords($item->kelas) }}</td>
+                                            <td>{{ ucwords($item->subject_name) }}</td>
                                             <td>{{ ucwords($item->created_by_name) }}</td>
                                             <td>{{ $item->status == 1 ? 'Aktif' : 'Tidak Aktif' }}</td>
                                             <td>{{ $item->created_at === null ? '-' : $item->created_at->format('d-m-Y') }}
@@ -104,7 +105,7 @@
                                                     class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
-                                        </tr> --}}
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

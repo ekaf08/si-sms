@@ -19,8 +19,14 @@ class ClassSubject extends Model
 
     static public function getClassSubjectAll()
     {
-        $data = ClassSubject::select('class_subject.*')
+        $data = ClassSubject::select('class_subject.*', 'kelas.kelas as kelas', 'subject.name as subject_name', 'users.name as created_by_name')
+            ->leftJoin('kelas', 'class_subject.class_id', 'kelas.id')
+            ->leftJoin('subject', 'class_subject.subject_id', 'subject.id')
+            ->leftJoin('users', 'class_subject.created_by', 'users.id')
+            ->orderBy('class_subject.id', 'desc')
             ->paginate(10);
+
+        // dd($data);
         return $data;
     }
 
