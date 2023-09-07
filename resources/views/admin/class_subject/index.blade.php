@@ -97,11 +97,11 @@
                                             </td>
                                             <td>
                                                 <!--Button Edit-->
-                                                <a href="{{ route('subject.edit', encrypt($item->id)) }}"
+                                                <a href="{{ route('subjectclass.edit', encrypt($item->id)) }}"
                                                     class="btn btn-primary"> <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                                 <!--Button Haous/ Destroy-->
-                                                <a href="{{ route('subject.destroy', encrypt($item->id)) }}"
+                                                <a href="{{ route('subjectclass.destroy', encrypt($item->id)) }}"
                                                     class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>

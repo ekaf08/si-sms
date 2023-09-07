@@ -26,7 +26,18 @@ class ClassSubject extends Model
             ->orderBy('class_subject.id', 'desc')
             ->paginate(10);
 
-        // dd($data);
+        return $data;
+    }
+
+    static public function getClassSubjectSingle($id)
+    {
+        $data = ClassSubject::select('class_subject.*', 'kelas.kelas as kelas', 'subject.name as subject_name', 'users.name as created_by_name')
+            ->leftJoin('kelas', 'class_subject.class_id', 'kelas.id')
+            ->leftJoin('subject', 'class_subject.subject_id', 'subject.id')
+            ->leftJoin('users', 'class_subject.created_by', 'users.id')
+            ->where('class_subject.id', $id)
+            ->first();
+
         return $data;
     }
 

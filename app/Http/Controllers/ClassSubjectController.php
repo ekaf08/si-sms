@@ -43,9 +43,12 @@ class ClassSubjectController extends Controller
 
     public function edit($id)
     {
+        $id = decrypt($id);
         $data['header_title'] = 'Edit Kategori Kelas';
         $data['getClass'] = ClassSubject::getClass();
         $data['getSubject'] = ClassSubject::getSubject();
+        $data['getDataSingle'] = ClassSubject::getClassSubjectSingle($id);
+        dd($data['getDataSingle'], $id);
 
         return view('admin.class_subject.edit', $data);
     }

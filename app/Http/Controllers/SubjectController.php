@@ -26,6 +26,7 @@ class SubjectController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255|unique:subject',
+            'type' => 'required|max:255',
         ]);
 
         $subject = new Subject();
@@ -57,6 +58,7 @@ class SubjectController extends Controller
         $id = decrypt($id);
         $request->validate([
             'name' => 'required|max:255|unique:subject,name,' . $id,
+            'type' => 'required|max:255',
         ]);
 
         $subject = Subject::getSubjectSingle($id);
