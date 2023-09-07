@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SubjectController;
 
@@ -54,6 +55,15 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('subject/update/{id}', [SubjectController::class, 'update'])->name('subject.update');
     Route::get('subject/destroy/{id}', [SubjectController::class, 'destroy'])->name('subject.destroy');
     /* End Route Subject */
+
+    /* Route Class Subject / Kategori Kelas */
+    Route::get('subjectclass/index', [ClassSubjectController::class, 'index'])->name('subjectclass.index');
+    Route::get('subjectclass/add', [ClassSubjectController::class, 'add'])->name('subjectclass.add');
+    Route::post('subjectclass/store', [ClassSubjectController::class, 'store'])->name('subjectclass.store');
+    Route::get('subjectclass/edit/{id}', [ClassSubjectController::class, 'edit'])->name('subjectclass.edit');
+    Route::post('subjectclass/update/{id}', [ClassSubjectController::class, 'update'])->name('subjectclass.update');
+    Route::get('subjectclass/destroy/{id}', [ClassSubjectController::class, 'destroy'])->name('subjectclass.destroy');
+    /* End Route Class Subject / Kategori Kelas */
 });
 
 Route::group(['middleware' => 'student'], function () {

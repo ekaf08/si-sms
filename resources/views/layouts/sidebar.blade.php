@@ -75,7 +75,17 @@
                               class="nav-link @if (Request::segment(1) == 'subject') active @endif">
                               <i class="nav-icon fas fa-box"></i>
                               <p>
-                                  Subject
+                                  Subjek
+                              </p>
+                          </a>
+                      </li>
+
+                      <li class="nav-item ">
+                          <a href="{{ route('subjectclass.index') }}"
+                              class="nav-link @if (Request::segment(1) == 'subjectclass') active @endif">
+                              <i class="nav-icon fas fa-box"></i>
+                              <p>
+                                  Kategori Kelas
                               </p>
                           </a>
                       </li>
