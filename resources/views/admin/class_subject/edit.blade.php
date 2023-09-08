@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Edit Subject')
+@section('title', 'Edit Kategori Kelas')
 @section('breadcrumb')
     @parent
-    <li class="breadcrumb-item active"><a href="{{ route('subject.index') }}">List Subject</a></li>
-    <li class="breadcrumb-item active">Edit Subject</li>
+    <li class="breadcrumb-item active"><a href="{{ route('subject.index') }}">List Kategori Kelas</a></li>
+    <li class="breadcrumb-item active">Edit Kategori Kelas</li>
 @endsection
 
 @section('content')
@@ -12,52 +12,51 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header text-white text-bold" style="background-color: #3c8dbc;">
-                    <h3 class="card-title">Form Edit Subject</h3>
+                    <h3 class="card-title">Form Edit Kategori Kelas</h3>
                 </div>
                 <!-- /.card-header -->
-                <form action="{{ route('subject.update', encrypt($getSubjectSingle->id)) }}" method="POST">
+                <form action="{{ route('subjectclass.update', encrypt($getClassSubjectSingle->id)) }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="name">Nama Subject : </label>
-                                    <input type="text" class="form-control form-control-border" name="name"
-                                        id="name" placeholder="Nama Subject ..." required
-                                        value="{{ old('name', $getSubjectSingle->name) }}">
-                                    <div class="text-danger">{{ $errors->first('name') }}</div>
+                                    <label for="class_id">Nama Kelas : </label>
+                                    <select name="class_id" id="class_id" class="form-control form-control-border">
+                                        <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu --
+                                        </option>
+                                        @foreach ($getClass as $kelas)
+                                            <option value="{{ $kelas->id }}">{{ $kelas->kelas }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="text-danger">{{ $errors->first('class_id') }}</div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="type">Type Subject : </label>
-                                    <select name="type" id="type" class="form-control form-control-border">
+                                    <label for="subject_id">Nama Subject : </label>
+                                    <select name="subject_id" id="subject_id" class="form-control form-control-border">
                                         <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu --
                                         </option>
-                                        <option {{ $getSubjectSingle->status == 'Teori' ? 'selected' : '' }} value="Teori">
-                                            Teori</option>
-                                        <option {{ $getSubjectSingle->status == 'Praktikum' ? 'selected' : '' }}
-                                            value="Praktikum">Praktikum</option>
+                                        @foreach ($getSubject as $subject)
+                                            <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                        @endforeach
                                     </select>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="status">Status Subject : </label>
-                                        <select name="status" id="status" class="form-control form-control-border">
-                                            <option {{ $getSubjectSingle->status == 1 ? 'selected' : '' }} value="1">
-                                                Aktif
-                                            </option>
-                                            <option {{ $getSubjectSingle->status == 0 ? 'selected' : '' }} value="0">
-                                                Tidak
-                                                Aktif</option>
-                                        </select>
-                                        <div class="text-danger">{{ $errors->first('status') }}</div>
-                                    </div>
+                                    <div class="text-danger">{{ $errors->first('subject_id') }}</div>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
-                            @include('_message')
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="status">Status Kategori Kelas : </label>
+                                    <select name="status" id="status" class="form-control form-control-border">
+                                        <option value="1">Aktif</option>
+                                        <option value="0">Tidak Aktif</option>
+                                    </select>
+                                    <div class="text-danger">{{ $errors->first('status') }}</div>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="text-left card-footer mt-2">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-save"></i> Simpan

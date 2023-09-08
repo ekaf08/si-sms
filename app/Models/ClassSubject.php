@@ -59,4 +59,12 @@ class ClassSubject extends Model
             ->get();
         return $data;
     }
+
+    static public function getAllReadyFirst($class_id, $subject_id)
+    {
+        $data = ClassSubject::where('class_id', '=', $class_id)
+            ->where('subject_id', '=', $subject_id)
+            ->first();
+        return $data;
+    }
 }

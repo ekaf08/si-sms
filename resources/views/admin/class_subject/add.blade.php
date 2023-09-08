@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Tambah Subject')
+@section('title', 'Tambah Kategori Kelas')
 @section('breadcrumb')
     @parent
     <li class="breadcrumb-item active"><a href="{{ route('subject.index') }}">List Kategori Kelas</a></li>
@@ -35,13 +35,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="subject_id">Nama Subject : </label>
-                                    <select name="subject_id" id="subject_id" class="form-control form-control-border">
-                                        <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu --
-                                        </option>
-                                        @foreach ($getSubject as $subject)
-                                            <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    @foreach ($getSubject as $subject)
+                                        <div>
+                                            <label for="{{ $subject->name }}" style="font-weight: normal;" class="ml-2">
+                                                <input type="checkbox" name="subject_id[]" value=" {{ $subject->id }}"
+                                                    id="{{ $subject->name }}">
+                                                {{ $subject->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                     <div class="text-danger">{{ $errors->first('subject_id') }}</div>
                                 </div>
                             </div>

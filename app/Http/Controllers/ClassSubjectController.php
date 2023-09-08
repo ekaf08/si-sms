@@ -26,19 +26,31 @@ class ClassSubjectController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'class_id' => 'required',
             'subject_id' => 'required',
         ]);
 
-        $data = new ClassSubject();
-        $data->class_id = $request->class_id;
-        $data->subject_id = $request->subject_id;
-        $data->status = $request->status;
-        $data->created_by = auth()->user()->id;
-        $data->save();
-
-        return redirect('subjectclass/index')->with('success', 'Data Berhasil Di Tambahkan.');
+        if (!empty($request->subject_id)) {
+            foreach ($request->subject_id as $subject_id) {
+                $getAllReadyFirst = ClassSubject::getAllReadyFirst($request->class_id, $subject_id);
+                if (!empty($getAllReadyFirst)) {
+                    $getAllReadyFirst->status = $request->status;
+                    $getAllReadyFirst->save();
+                } else {
+                    $data = new ClassSubject();
+                    $data->class_id = $request->class_id;
+                    $data->subject_id = $subject_id;
+                    $data->status = $request->status;
+                    $data->created_by = auth()->user()->id;
+                    $data->save();
+                }
+            }
+            return redirect('subjectclass/index')->with('success', 'Data Berhasil Di Tambahkan.');
+        } else {
+            return redirect()->back()->with('error', 'Mohon maaf, Data gagal disimpan.');
+        }
     }
 
     public function edit($id)
