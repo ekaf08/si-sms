@@ -29,22 +29,15 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-md-3">
-                                        <label for="subject">Subject : </label>
-                                        <input type="text" class="form-control" value="{{ Request::get('subject') }}"
-                                            name="subject" placeholder="Nama subject ..">
+                                        <label for="subject">Nama Kelas : </label>
+                                        <input type="text" class="form-control" value="{{ Request::get('kelas') }}"
+                                            name="kelas" placeholder="Nama kelas ..">
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="type">Type : </label>
-                                        <select name="type" id="type" class="form-control">
-                                            <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu
-                                                --
-                                            </option>
-                                            <option {{ Request::get('type') == 'Teori' ? 'selected' : '' }} value="Teori">
-                                                Teori</option>
-                                            <option {{ Request::get('type') == 'Praktikum' ? 'selected' : '' }}
-                                                value="Praktikum">Praktikum</option>
-                                        </select>
+                                        <label for="subject">Nama Subject : </label>
+                                        <input type="text" class="form-control" value="{{ Request::get('subject') }}"
+                                            name="subject" placeholder="Nama subject ..">
                                     </div>
 
                                     <div class="form-group col-md-3">
@@ -57,7 +50,7 @@
                                         <button class="btn btn-primary" type="submit" style="margin-top: 30px">
                                             <i class="fas fa-search"></i> Cari
                                         </button>
-                                        <a href="{{ route('subject.index') }}" class="btn btn-secondary"
+                                        <a href="{{ route('subjectclass.index') }}" class="btn btn-secondary"
                                             style="margin-top: 30px"> <i class="fas fa-trash"></i> Reset</a>
                                     </div>
                                 </div>

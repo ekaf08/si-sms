@@ -22,8 +22,19 @@ class ClassSubject extends Model
         $data = ClassSubject::select('class_subject.*', 'kelas.kelas as kelas', 'subject.name as subject_name', 'users.name as created_by_name')
             ->leftJoin('kelas', 'class_subject.class_id', 'kelas.id')
             ->leftJoin('subject', 'class_subject.subject_id', 'subject.id')
-            ->leftJoin('users', 'class_subject.created_by', 'users.id')
-            ->orderBy('class_subject.id', 'desc')
+            ->leftJoin('users', 'class_subject.created_by', 'users.id');
+        // search
+        if (!empty(Request::get('kelas'))) {
+            $data = $data->where('kelas.kelas', 'like', '%' . Request::get('kelas') . '%');
+        }
+        if (!empty(Request::get('subject'))) {
+            $data = $data->where('subject.name', 'like', '%' . Request::get('name') . '%');
+        }
+        if (!empty(Request::get('date'))) {
+            $data = $data->whereDate('subject.created_at', '=', Request::get('date'));
+        }
+        // END search
+        $data = $data->orderBy('class_subject.id', 'desc')
             ->paginate(10);
 
         return $data;
