@@ -78,4 +78,16 @@ class ClassSubject extends Model
             ->first();
         return $data;
     }
+
+    static public function getAssignSubjectID($class_id)
+    {
+        $data = self::where('class_id', '=', $class_id)->whereNull('deleted_at')->get();
+        return $data;
+    }
+
+    static public function deleteSubject($class_id)
+    {
+        $data = self::where('class_id', '=', $class_id)->delete();
+        return $data;
+    }
 }

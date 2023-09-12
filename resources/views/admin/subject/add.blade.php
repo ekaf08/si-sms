@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     <label for="type">Type Subject : </label>
                                     <select name="type" id="type" class="form-control form-control-border">
-                                        <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu --
+                                        <option value="" selected="true" disabled="disabled">-- Pilih --
                                         </option>
                                         <option value="Teori">Teori</option>
                                         <option value="Praktikum">Praktikum</option>

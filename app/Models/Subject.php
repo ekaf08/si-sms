@@ -41,4 +41,13 @@ class Subject extends Model
         $data = Subject::find($id);
         return $data;
     }
+
+    static public function getSubject()
+    {
+        $data = Subject::select('*')
+            ->where('status', '=', '1')
+            ->orderBy('name', 'asc')
+            ->get();
+        return $data;
+    }
 }

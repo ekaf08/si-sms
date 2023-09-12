@@ -15,7 +15,7 @@
                     <h3 class="card-title">Form Edit Kategori Kelas</h3>
                 </div>
                 <!-- /.card-header -->
-                <form action="{{ route('subjectclass.update', encrypt($getClassSubjectSingle->id)) }}" method="POST">
+                <form action="{{ route('subjectclass.update', encrypt($getRecord->id)) }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -23,10 +23,11 @@
                                 <div class="form-group">
                                     <label for="class_id">Nama Kelas : </label>
                                     <select name="class_id" id="class_id" class="form-control form-control-border">
-                                        <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu --
+                                        <option value="" selected="true" disabled="disabled">-- Pilih --
                                         </option>
                                         @foreach ($getClass as $kelas)
-                                            <option value="{{ $kelas->id }}">{{ $kelas->kelas }}</option>
+                                            <option {{ $getRecord->class_id == $kelas->id ? 'selected' : '' }}
+                                                value="{{ $kelas->id }}">{{ $kelas->kelas }}</option>
                                         @endforeach
                                     </select>
                                     <div class="text-danger">{{ $errors->first('class_id') }}</div>
@@ -35,13 +36,25 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="subject_id">Nama Subject : </label>
-                                    <select name="subject_id" id="subject_id" class="form-control form-control-border">
-                                        <option value="" selected="true" disabled="disabled">-- Pilih Salah Satu --
-                                        </option>
-                                        @foreach ($getSubject as $subject)
-                                            <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                    @foreach ($getSubject as $subject)
+                                        @php
+                                            $checked = '';
+                                        @endphp
+                                        @foreach ($getAssignSubjectID as $subjectAssign)
+                                            @if ($subjectAssign->subject_id == $subject->id)
+                                                @php
+                                                    $checked = 'checked';
+                                                @endphp
+                                            @endif
                                         @endforeach
-                                    </select>
+                                        <div>
+                                            <label for="{{ $subject->name }}" style="font-weight: normal;" class="ml-2">
+                                                <input type="checkbox" name="subject_id[]" value=" {{ $subject->id }}"
+                                                    id="{{ $subject->name }}" {{ $checked }}>
+                                                {{ $subject->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                     <div class="text-danger">{{ $errors->first('subject_id') }}</div>
                                 </div>
                             </div>
@@ -49,8 +62,10 @@
                                 <div class="form-group">
                                     <label for="status">Status Kategori Kelas : </label>
                                     <select name="status" id="status" class="form-control form-control-border">
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Tidak Aktif</option>
+                                        <option {{ $getRecord->status == 1 ? 'selected' : '' }} value="1">Aktif
+                                        </option>
+                                        <option {{ $getRecord->status == 1 ? 'selected' : '' }} value="0">Tidak Aktif
+                                        </option>
                                     </select>
                                     <div class="text-danger">{{ $errors->first('status') }}</div>
                                 </div>

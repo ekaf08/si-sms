@@ -38,4 +38,14 @@ class Kelas extends Model
         $kelas = Kelas::find($id);
         return $kelas;
     }
+
+    static public function getClass()
+    {
+        $data = Kelas::select('*')
+            ->where('status', '=', '1')
+            ->orderBy('kelas', 'asc')
+            ->get();
+
+        return $data;
+    }
 }

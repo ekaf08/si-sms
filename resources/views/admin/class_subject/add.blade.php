@@ -51,6 +51,7 @@
                                 <div class="form-group">
                                     <label for="status">Status Kategori Kelas : </label>
                                     <select name="status" id="status" class="form-control form-control-border">
+                                        <option value="" selected="true" disabled>-- Pilih --</option>
                                         <option value="1">Aktif</option>
                                         <option value="0">Tidak Aktif</option>
                                     </select>

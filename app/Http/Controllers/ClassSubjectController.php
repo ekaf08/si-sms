@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClassSubject;
+use App\Models\Kelas;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+
 
 class ClassSubjectController extends Controller
 {
@@ -30,6 +33,7 @@ class ClassSubjectController extends Controller
         $request->validate([
             'class_id' => 'required',
             'subject_id' => 'required',
+            'status' => 'required',
         ]);
 
         if (!empty($request->subject_id)) {
@@ -56,22 +60,52 @@ class ClassSubjectController extends Controller
     public function edit($id)
     {
         $id = decrypt($id);
-        $data['header_title'] = 'Edit Kategori Kelas';
-        $data['getClass'] = ClassSubject::getClass();
-        $data['getSubject'] = ClassSubject::getSubject();
-        $data['getDataSingle'] = ClassSubject::getClassSubjectSingle($id);
-        dd($data['getDataSingle'], $id);
+        $getRecord = ClassSubject::getClassSubjectSingle($id);
+        if (!empty($getRecord)) {
+            $data['getRecord'] = $getRecord;
+            $data['getAssignSubjectID'] = ClassSubject::getAssignSubjectID($getRecord->class_id);
+            $data['header_title'] = 'Edit Kategori Kelas';
+            $data['getClass'] = Kelas::getClass();
+            $data['getSubject'] = Subject::getSubject();
 
-        return view('admin.class_subject.edit', $data);
+            return view('admin.class_subject.edit', $data);
+        } else {
+            abort(404);
+        }
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $id = decrypt($id);
+        ClassSubject::deleteSubject($request->class_id);
+
+        if (!empty($request->subject_id)) {
+            foreach ($request->subject_id as $subject_id) {
+                $getAllReadyFirst = ClassSubject::getAllReadyFirst($request->class_id, $subject_id);
+                if (!empty($getAllReadyFirst)) {
+                    $getAllReadyFirst->status = $request->status;
+                    $getAllReadyFirst->save();
+                } else {
+                    $data = new ClassSubject();
+                    $data->class_id = $request->class_id;
+                    $data->subject_id = $subject_id;
+                    $data->status = $request->status;
+                    $data->created_by = auth()->user()->id;
+                    $data->save();
+                }
+            }
+            return redirect('subjectclass/index')->with('success', 'Data Berhasil Di Perbarui.');
+        } else {
+            return redirect()->back()->with('error', 'Mohon maaf, Data gagal di perbarui.');
+        }
     }
 
     public function destroy($id)
     {
-        //
+        $id = decrypt($id);
+        $data = ClassSubject::getClassSubjectSingle($id);
+        $data->delete();
+
+        return redirect('subjectclass/index')->with('success', 'Data Berhasil Di Hapus.');
     }
 }
