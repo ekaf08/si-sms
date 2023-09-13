@@ -108,4 +108,21 @@ class ClassSubjectController extends Controller
 
         return redirect('subjectclass/index')->with('success', 'Data Berhasil Di Hapus.');
     }
+
+    public function edit_single($id)
+    {
+        $id = decrypt($id);
+        $getRecord = ClassSubject::getClassSubjectSingle($id);
+        if (!empty($getRecord)) {
+            $data['getRecord'] = $getRecord;
+            $data['getAssignSubjectID'] = ClassSubject::getAssignSubjectID($getRecord->class_id);
+            $data['header_title'] = 'Edit Kategori Kelas';
+            $data['getClass'] = Kelas::getClass();
+            $data['getSubject'] = Subject::getSubject();
+
+            return view('admin.class_subject.edit_single', $data);
+        } else {
+            abort(404);
+        }
+    }
 }

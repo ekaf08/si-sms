@@ -36,25 +36,14 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="subject_id">Nama Subject : </label>
-                                    @foreach ($getSubject as $subject)
-                                        @php
-                                            $checked = '';
-                                        @endphp
-                                        @foreach ($getAssignSubjectID as $subjectAssign)
-                                            @if ($subjectAssign->subject_id == $subject->id)
-                                                @php
-                                                    $checked = 'checked';
-                                                @endphp
-                                            @endif
+                                    <select name="subject_id" id="subject_id" class="form-control form-control-border">
+                                        <option value="" selected="true" disabled="disabled">-- Pilih --
+                                        </option>
+                                        @foreach ($getSubject as $subject)
+                                            <option {{ $getRecord->subject_id == $subject->id ? 'selected' : '' }}
+                                                value="{{ $subject->id }}">{{ $subject->name }}</option>
                                         @endforeach
-                                        <div>
-                                            <label for="{{ $subject->name }}" style="font-weight: normal;" class="ml-2">
-                                                <input type="checkbox" name="subject_id[]" value=" {{ $subject->id }}"
-                                                    id="{{ $subject->name }}" {{ $checked }}>
-                                                {{ $subject->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
+                                    </select>
                                     <div class="text-danger">{{ $errors->first('subject_id') }}</div>
                                 </div>
                             </div>

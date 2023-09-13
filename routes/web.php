@@ -52,7 +52,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('subject/add', [SubjectController::class, 'add'])->name('subject.add');
     Route::post('subject/store', [SubjectController::class, 'store'])->name('subject.store');
     Route::get('subject/edit/{id}', [SubjectController::class, 'edit'])->name('subject.edit');
-    Route::post('subject/update/{id}', [SubjectController::class, 'update'])->name('subject.update');
+    Route::post('subject/update/{id}', [SubjectController::class, 'update'])->name('subject.update_single');
     Route::get('subject/destroy/{id}', [SubjectController::class, 'destroy'])->name('subject.destroy');
     /* End Route Subject */
 
@@ -62,6 +62,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('subjectclass/store', [ClassSubjectController::class, 'store'])->name('subjectclass.store');
     Route::get('subjectclass/edit/{id}', [ClassSubjectController::class, 'edit'])->name('subjectclass.edit');
     Route::post('subjectclass/update/{id}', [ClassSubjectController::class, 'update'])->name('subjectclass.update');
+    Route::get('subjectclass/edit_single/{id}', [ClassSubjectController::class, 'edit_single'])->name('subjectclass.edit_single');
+    Route::post('subjectclass/update_single/{id}', [ClassSubjectController::class, 'update_single'])->name('subjectclass.update_single');
     Route::get('subjectclass/destroy/{id}', [ClassSubjectController::class, 'destroy'])->name('subjectclass.destroy');
     /* End Route Class Subject / Kategori Kelas */
 });
