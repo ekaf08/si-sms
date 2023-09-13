@@ -91,11 +91,13 @@
                                             <td>
                                                 <!--Button Edit-->
                                                 <a href="{{ route('subjectclass.edit', encrypt($item->id)) }}"
-                                                    class="btn btn-primary"> <i class="fas fa-pencil-alt"></i>
+                                                    class="btn btn-primary" title="Edit Subjek {{ $item->subject_name }}">
+                                                    <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                                 <!--Button Edit Single-->
                                                 <a href="{{ route('subjectclass.edit_single', encrypt($item->id)) }}"
-                                                    class="btn btn-primary"> <i class="fas fa-edit"></i>
+                                                    class="btn btn-success" title="Edit Kelas {{ $item->kelas }}"> <i
+                                                        class="fas fa-edit"></i>
                                                 </a>
                                                 <!--Button Haous/ Destroy-->
                                                 <a href="{{ route('subjectclass.destroy', encrypt($item->id)) }}"
