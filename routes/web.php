@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,16 +67,36 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('subjectclass/update_single/{id}', [ClassSubjectController::class, 'update_single'])->name('subjectclass.update_single');
     Route::get('subjectclass/destroy/{id}', [ClassSubjectController::class, 'destroy'])->name('subjectclass.destroy');
     /* End Route Class Subject / Kategori Kelas */
+
+    /* Route Ganti Password */
+    Route::get('gantipassword/index', [UserController::class, 'index'])->name('gantipassword.index');
+    Route::post('gantipassword/store', [UserController::class, 'store'])->name('gantipassword.store');
+    /* End Route Ganti Password */
 });
 
 Route::group(['middleware' => 'student'], function () {
     Route::get('student/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.student');
+
+    /* Route Ganti Password */
+    Route::get('gantipassword/index', [UserController::class, 'index'])->name('gantipassword.index');
+    Route::post('gantipassword/store', [UserController::class, 'store'])->name('gantipassword.store');
+    /* End Route Ganti Password */
 });
 
 Route::group(['middleware' => 'teacher'], function () {
     Route::get('teacher/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.teacher');
+
+    /* Route Ganti Password */
+    Route::get('gantipassword/index', [UserController::class, 'index'])->name('gantipassword.index');
+    Route::post('gantipassword/store', [UserController::class, 'store'])->name('gantipassword.store');
+    /* End Route Ganti Password */
 });
 
 Route::group(['middleware' => 'parent'], function () {
     Route::get('parent/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.parent');
+
+    /* Route Ganti Password */
+    Route::get('gantipassword/index', [UserController::class, 'index'])->name('gantipassword.index');
+    Route::post('gantipassword/store', [UserController::class, 'store'])->name('gantipassword.store');
+    /* End Route Ganti Password */
 });
