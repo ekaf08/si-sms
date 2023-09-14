@@ -89,18 +89,6 @@
                               </p>
                           </a>
                       </li>
-
-                      <!--Menu untuk Ganti Password-->
-                      <li class="nav-item ">
-                          <a href="{{ route('gantipassword.index') }}"
-                              class="nav-link @if (Request::segment(1) == 'gantipassword') active @endif">
-                              <i class="nav-icon fas fa-key"></i>
-                              <p>
-                                  Ganti Password
-                              </p>
-                          </a>
-                      </li>
-                      <!--End Menu untuk Ganti Password-->
                       <!--End Menu untuk admin-->
                   @elseif(Auth::user()->user_type == 2)
                       <!--Menu untuk siswa-->
@@ -137,18 +125,6 @@
                               </p>
                           </a>
                       </li>
-
-                      <!--Menu untuk Ganti Password-->
-                      <li class="nav-item ">
-                          <a href="{{ route('gantipassword.index') }}"
-                              class="nav-link @if (Request::segment(1) == 'gantipassword') active @endif">
-                              <i class="nav-icon fas fa-key"></i>
-                              <p>
-                                  Ganti Password
-                              </p>
-                          </a>
-                      </li>
-                      <!--End Menu untuk Ganti Password-->
                       <!--End Menu untuk guru-->
                   @elseif(Auth::user()->user_type == 4)
                       <!--Menu untuk parent-->
@@ -161,20 +137,20 @@
                               </p>
                           </a>
                       </li>
-
-                      <!--Menu untuk Ganti Password-->
-                      <li class="nav-item ">
-                          <a href="{{ route('gantipassword.index') }}"
-                              class="nav-link @if (Request::segment(1) == 'gantipassword') active @endif">
-                              <i class="nav-icon fas fa-key"></i>
-                              <p>
-                                  Ganti Password
-                              </p>
-                          </a>
-                      </li>
-                      <!--End Menu untuk Ganti Password-->
                       <!--End Menu untuk parent-->
                   @endif
+
+                  <!--Menu untuk Ganti Password-->
+                  <li class="nav-item ">
+                      <a href="{{ route('gantipassword.index') }}"
+                          class="nav-link @if (Request::segment(1) == 'gantipassword') active @endif">
+                          <i class="nav-icon fas fa-key"></i>
+                          <p>
+                              Ganti Password
+                          </p>
+                      </a>
+                  </li>
+                  <!--End Menu untuk Ganti Password-->
 
                   <li class="nav-item ">
                       <a href="{{ route('logout') }}" class="nav-link ">

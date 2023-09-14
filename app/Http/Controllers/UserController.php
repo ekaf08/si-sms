@@ -9,8 +9,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        //
-        dd('Ok');
+        dd('disinsek');
+        $data['header_title'] = 'Ganti Password';
+        return view('admin.ganti_password.index', $data);
     }
 
     public function store(Request $request)

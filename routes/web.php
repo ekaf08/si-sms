@@ -29,8 +29,9 @@ Route::get('/reset/{token}', [AuthController::class, 'reset'])->name('reset_pass
 Route::post('reset/{token}', [AuthController::class, 'postreset'])->name('post_reset');
 
 Route::group(['middleware' => 'admin'], function () {
-    /* Route list admin */
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.admin');
+
+    /* Route list admin */
     Route::get('admin/list', [AdminController::class, 'list'])->name('admin_list');
     Route::get('admin/list/add', [AdminController::class, 'add'])->name('add_admin');
     Route::post('admin/list/add', [AdminController::class, 'store'])->name('admin.store');
