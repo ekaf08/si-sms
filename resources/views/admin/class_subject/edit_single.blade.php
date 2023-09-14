@@ -15,7 +15,7 @@
                     <h3 class="card-title">Form Edit Kategori Kelas</h3>
                 </div>
                 <!-- /.card-header -->
-                <form action="{{ route('subjectclass.update', encrypt($getRecord->id)) }}" method="POST">
+                <form action="{{ route('subjectclass.update_single', encrypt($getRecord->id)) }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="row">

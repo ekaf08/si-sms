@@ -115,7 +115,6 @@ class ClassSubjectController extends Controller
         $getRecord = ClassSubject::getClassSubjectSingle($id);
         if (!empty($getRecord)) {
             $data['getRecord'] = $getRecord;
-            $data['getAssignSubjectID'] = ClassSubject::getAssignSubjectID($getRecord->class_id);
             $data['header_title'] = 'Edit Kategori Kelas';
             $data['getClass'] = Kelas::getClass();
             $data['getSubject'] = Subject::getSubject();
@@ -123,6 +122,28 @@ class ClassSubjectController extends Controller
             return view('admin.class_subject.edit_single', $data);
         } else {
             abort(404);
+        }
+    }
+
+    public function update_single(Request $request, $id)
+    {
+        $id = decrypt($id);
+        $getAllReadyFirst = ClassSubject::getAllReadyFirst($request->class_id, $request->subject_id);
+        dd($getAllReadyFirst);
+        if (!empty($getAllReadyFirst)) {
+            $getAllReadyFirst->status = $request->status;
+            $getAllReadyFirst->save();
+
+            return redirect('subjectclass/index')->with('success', 'Status berhasil di perbarui.');
+        } else {
+            $data = ClassSubject::getClassSubjectSingle($id);
+            $data->class_id = $request->class_id;
+            $data->subject_id = $request->subject_id;
+            $data->status = $request->status;
+            $data->created_by = auth()->user()->id;
+            $data->save();
+
+            return redirect('subjectclass/index')->with('success', 'Data berhasil disimpan.');
         }
     }
 }
