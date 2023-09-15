@@ -53,6 +53,22 @@
                             </div>
                         </div>
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="captcha">
+                            <span>{!! captcha_img() !!}</span>
+                            <button type="button" class="btn btn-primary btn-refresh">
+                                <i class="fas fa-recycle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" name="captcha" id="captcha" class="form-control" placeholder="Captcha">
+                    </div>
+                    @if ($errors->has('captcha'))
+                        <span class="help-block text-danger">
+                            <strong>{{ $errors->first('captcha') }}</strong>
+                        </span>
+                    @endif
                     @include('_message')
                     <div class="row">
                         <div class="col-8">
@@ -105,6 +121,18 @@
     <script src="{{ asset('/asset/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('/asset/dist/js/adminlte.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(".btn-refresh").click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '/refresh_captcha',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Mail\ForgotPasswordMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Captcha;
+use App\Http\Controllers\captcha_img;
 
 class AuthController extends Controller
 {
@@ -30,6 +32,14 @@ class AuthController extends Controller
 
     public function authLogin(Request $request)
     {
+        $request->validate(
+            [
+                'email' => 'required|email',
+                'password' => 'required',
+                'captcha' => 'required|captcha'
+            ],
+            ['captcha.captcha' => 'Invalid captcha code.']
+        );
         $remember = !empty($request->remember) ? true : false;
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             if (Auth::user()->user_type == 1) {
@@ -44,6 +54,12 @@ class AuthController extends Controller
         } else {
             return redirect()->back()->with('error', 'Username atau Password tidak sesuai.');
         }
+    }
+
+    public function refresh_captcha()
+    {
+        $captcha = Captcha::img();
+        return response()->json(['captcha' => $captcha]);
     }
 
     public function logout()
