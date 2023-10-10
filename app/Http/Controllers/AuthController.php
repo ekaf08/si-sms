@@ -32,8 +32,6 @@ class AuthController extends Controller
 
     public function authLogin(Request $request)
     {
-
-        dd($request->all());
         $request->validate(
             [
                 'email' => 'required|email',
@@ -67,7 +65,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect(url('/'));
+        return redirect()->route('login');
     }
 
     public function forgotpassword()

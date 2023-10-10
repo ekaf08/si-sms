@@ -21,13 +21,13 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
-Route::post('/', [AuthController::class, 'authLogin'])->name('authLogin');
+Route::post('/store', [AuthController::class, 'authLogin'])->name('authLogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/lupa_password', [AuthController::class, 'forgotpassword'])->name('lupa_password');
 Route::post('/lupa_password', [AuthController::class, 'postforgot'])->name('post_lupa_password');
 Route::get('/reset/{token}', [AuthController::class, 'reset'])->name('reset_password');
 Route::post('reset/{token}', [AuthController::class, 'postreset'])->name('post_reset');
-Route::get('/refresh_captcha', [AuthController::class, 'refresh_captcha'])->name('refresh_captcha');
+Route::post('/refreshcaptcha', [AuthController::class, 'refresh_captcha'])->name('refresh_captcha');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.admin');

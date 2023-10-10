@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SI-SMS | Log in</title>
 
     <!-- Google Font: Popins -->
@@ -124,9 +125,14 @@
 
     <script type="text/javascript">
         $(".btn-refresh").click(function() {
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
             $.ajax({
-                type: 'GET',
-                url: '/refresh_captcha',
+                type: 'POST',
+                url: '{{ route('refresh_captcha') }}',
+                data: {
+                    _token: csrfToken, // Ini adalah bagian yang menambahkan token CSRF
+                },
                 success: function(data) {
                     $(".captcha span").html(data.captcha);
                 }
